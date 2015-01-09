@@ -144,6 +144,9 @@ CREATE  TABLE IF NOT EXISTS `Synvent`.`DIRECCION` (
   `municipio_deleg` VARCHAR(45) NOT NULL , 
   `id_entidad_fed` INT NOT NULL ,
   `cp` VARCHAR(45) NULL ,
+   `fecha_creacion` DATETIME NOT NULL ,
+  `creado_by` VARCHAR(20) NOT NULL ,
+  `fecha_ult_modific` DATETIME NULL ,
   PRIMARY KEY (`id_direccion`),
    CONSTRAINT `id_entidad_fed`
     FOREIGN KEY (`id_entidad_fed` )

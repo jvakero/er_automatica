@@ -262,7 +262,12 @@ CREATE UNIQUE INDEX `id_producto_UNIQUE` ON `Synvent`.`PRODUCTO` (`id_producto` 
   `fecha_creacion` DATETIME NOT NULL ,
   `creado_by` VARCHAR(20) NOT NULL ,
   `fecha_ult_modific` DATETIME NULL ,
-  PRIMARY KEY (`id_precio`,`id_producto`) )
+  PRIMARY KEY (`id_precio`,`id_producto`),
+  CONSTRAINT `id_producto`
+    FOREIGN KEY (`id_producto` )
+    REFERENCES `Synvent`.`PRODUCTO` (`id_producto` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION )
   AUTO_INCREMENT = 1;
 
 
@@ -274,7 +279,7 @@ CREATE  TABLE IF NOT EXISTS `Synvent`.`VENTA` (
   `id_venta` INT NOT NULL ,
   `numero_venta` VARCHAR(45) NULL ,
   `id_tipo_venta` INT NOT NULL ,
-  `id_producto` INT NULL , -- cambiar por nueva tabla de productos_venta
+  -- `id_producto` INT NULL , -- cambiar por nueva tabla de productos_venta
   `porcentaje_descuento` FLOAT  NULL ,
   `piezas` DOUBLE NOT NULL ,
   `subtotal` DOUBLE NULL ,
@@ -292,11 +297,11 @@ CREATE  TABLE IF NOT EXISTS `Synvent`.`VENTA` (
     REFERENCES `Synvent`.`CAT_TIPO_VENTA` (`id_tipo_venta` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `id_producto`
-    FOREIGN KEY (`id_producto` )
-    REFERENCES `Synvent`.`PRODUCTO` (`id_producto` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  -- CONSTRAINT `id_producto`
+  --  FOREIGN KEY (`id_producto` )
+  --  REFERENCES `Synvent`.`PRODUCTO` (`id_producto` )
+  --  ON DELETE NO ACTION
+  --  ON UPDATE NO ACTION,
   CONSTRAINT `id_usuario`
     FOREIGN KEY (`id_usuario` )
     REFERENCES `Synvent`.`USUARIO` (`id_usuario` )
